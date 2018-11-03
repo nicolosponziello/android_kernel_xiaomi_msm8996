@@ -1246,7 +1246,7 @@ static int mxt_set_clr_reg(struct mxt_data *data,
 				u8 type, u8 offset, u8 mask_s, u8 mask_c)
 {
 	int error;
-	u8 val;
+	u8 val = 0;
 
 	error = mxt_read_object(data, type, offset, &val);
 	if (error) {
@@ -4889,7 +4889,7 @@ static ssize_t mxt_edge_suppression_enable_show(struct device *dev,
 {
 	struct mxt_data *data = dev_get_drvdata(dev);
 	int count;
-	u8 val;
+	u8 val = 0;
 	int error;
 
 	error = mxt_read_object(data, MXT_PROCI_GRIP_T40, MXT_PROCI_GRIP_CTRL, &val);
@@ -6648,7 +6648,7 @@ static ssize_t mxt_selftest_read(struct file *file, char __user *buf, size_t cou
 
 static ssize_t mxt_selftest_write(struct file *file, const char __user *buf, size_t count, loff_t *pos)
 {
-	int retval;
+	int retval = 0;
 
 	if (!strncmp(buf, "short", 5)) {
 		retval = short_test();

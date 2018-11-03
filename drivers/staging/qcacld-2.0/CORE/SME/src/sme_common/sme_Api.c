@@ -10003,6 +10003,7 @@ eHalStatus sme_SetMaxTxPowerPerBand(eCsrBand band, v_S7_t dB,
 	return status;
 }
 
+
 /**
  * sme_SetMaxTxPower() - Set the Maximum Transmit Power
  *

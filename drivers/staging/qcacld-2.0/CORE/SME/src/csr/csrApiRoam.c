@@ -9787,7 +9787,7 @@ void csrRoamJoinedStateMsgProcessor( tpAniSirGlobal pMac, void *pMsgBuf )
             tSirSmeAssocIndToUpperLayerCnf *pUpperLayerAssocCnf;
             tCsrRoamInfo roamInfo;
             tCsrRoamInfo *pRoamInfo = NULL;
-            tANI_U32 sessionId;
+            tANI_U32 sessionId = 0;
             eHalStatus status;
             smsLog( pMac, LOG1, FL("ASSOCIATION confirmation can be given to upper layer "));
             vos_mem_set(&roamInfo, sizeof(tCsrRoamInfo), 0);
@@ -17685,7 +17685,7 @@ eHalStatus csrGetSnr(tpAniSirGlobal pMac,
 {
    eHalStatus status = eHAL_STATUS_SUCCESS;
    vos_msg_t  msg;
-   tANI_U32 sessionId;
+   tANI_U32 sessionId = 0;
 
    tAniGetSnrReq *pMsg;
 
@@ -18689,13 +18689,13 @@ eHalStatus csrRoamOffloadScan(tpAniSirGlobal pMac, tANI_U8 sessionId,
             pRequestBuf->ConnectedNetwork.ChannelCache[num_channels++] =
                 *ChannelList;
 
-            if (*ChannelList)
+            if (*ChannelList){
                   VOS_TRACE(VOS_MODULE_ID_SME, VOS_TRACE_LEVEL_DEBUG,
                        "DFSRoam=%d, ChnlState=%d, Chnl=%d, num_ch=%d",
                        pMac->roam.configParam.allowDFSChannelRoam,
                        vos_nv_getChannelEnabledState(*ChannelList),
                        *ChannelList,
-                       num_channels);
+                       num_channels);}
               ChannelList++;
         }
         pRequestBuf->ConnectedNetwork.ChannelCount = num_channels;
