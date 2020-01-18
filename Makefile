@@ -301,6 +301,7 @@ HOSTCXXFLAGS = -O2
 
 ifeq ($(shell $(HOSTCC) -v 2>&1 | grep -c "clang version"), 1)
 HOSTCFLAGS  += -Wno-unused-value -Wno-unused-parameter \
+		-Wno-unused-variable
 		-Wno-missing-field-initializers -fno-delete-null-pointer-checks
 endif
 
@@ -404,6 +405,8 @@ KBUILD_CFLAGS   := -Werror -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Wno-format-security \
 		   -fmerge-all-constants \
            -Wno-address-of-packed-member -Wno-missing-attributes \
+		-Wno-packed-not-aligned \
+		-Wno-sizeof-pointer-memaccess\
 		   -march=armv8-a+simd+crypto+crc -mcpu=cortex-a57.cortex-a53 -mtune=cortex-a57.cortex-a53 \
 		   -std=gnu89
 
